@@ -1,0 +1,401 @@
+Tasks:
+
+- FRONT FW    35:117 - 38:289   3.172s  36:113 - 36:252 0.139s
+- CENTER FW   38:363 - 42:072   3.709s  41:112 - 41:841 0.729s
+- BACK        42:080 - 44:611   2.531s  43:566 - 43:595 0.030s
+- CENTER BW   44:611 - 49:350   4.738s  46:001 - 47:660 1.659s
+- FRONT BW    49:359 - 53:015   3.656s  52:610 - 52:645 0.035s
+
+TOTAL (COMP)                     2.592s
+
+TOTAL (SUM)                     17.806s
+TOTAL (E2E)   35:117 - 53:015   17.898s
+DIFF  (E2E - SUM)                0.092s
+
+DIFF  (SUM - COMP)              15.214s
+DIFF  (E2E - COMP)              15.306s
+
+POLLING TOTAL = 0.394 + 0.240 + 0.893 + 0.751 + 0.717 = 2.995s
+COMP TOTAL = 0.139 + 0.729 + 0.030 + 1.659 + 0.035 = 2.592s
+TRANSFER TOTAL = 1.693 + 2.502 + 1.041 + 1.847 + 2.523 = 9.606s
+UNKNOWN TOTAL = 0.749 + 0.193 + 0.453 + 0.296 + 0.363 = 2.054s
+OTHER TOTAL = 0.197 + 0.045 + 0.114 + 0.185 + 0.018 = 0.559
+OTHER TOTAL + DIFF = 0.559 + 0.092 = 0.651
+
+TOTAL = 2.995 + 2.592 + 9.606 + 2.054 + 0.559 + 0.092 = 17.898s
+
+========
+FRONT FW
+========
+
+======
+SERVER
+======
+2022-07-28 02:52:35,117 - ModelAggregatorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Forwarding weights at round 80
+2022-07-28 02:52:35,176 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Epoch 7/200 still running.
+2022-07-28 02:52:35,184 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Batch 3/10 started.
+2022-07-28 02:52:35,185 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Round 81 started.
+2022-07-28 02:52:35,185 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Sending front HFL stage task to site-1
+2022-07-28 02:52:35,185 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: scheduled task train
+POLLING
+2022-07-28 02:52:35,579 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: assigned task to client: name=train, id=7bb759b6-2b9b-427a-b030-a2b70d4604d5
+2022-07-28 02:52:35,579 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: sent task assignment to client
+TRANSFER SERVER -> CLIENT START
+2022-07-28 02:52:36,103 - FederatedServer - INFO - GetTask: Return task: train to client: site-1 (7191f948-5ef0-4b8d-b9e5-26336571ee75)
+
+==============
+FRONT FW START
+==============
+TRANSFER SERVER -> CLIENT END
+2022-07-28 02:52:36,104 - Communicator - INFO - Received from example_project server  (794 Bytes). getTask time: 1.0272531509399414 seconds
+2022-07-28 02:52:36,112 - FederatedClient - INFO - pull_task completed. Task name:train Status:True
+2022-07-28 02:52:36,112 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got task assignment: name=train, id=7bb759b6-2b9b-427a-b030-a2b70d4604d5
+2022-07-28 02:52:36,113 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: invoking task executor <class 'pt.executors.learner_executor_splitnn.LearnerExecutorSplitNN'>
+2022-07-28 02:52:36,113 - LearnerExecutorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: Client trainer got task: train
+2022-07-28 02:52:36,113 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: FRONT HFL FW stage of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-1 started
+2022-07-28 02:52:36,252 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: FRONT HFL FW stage of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-1 finished
+2022-07-28 02:52:36,253 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: finished processing task
+2022-07-28 02:52:36,260 - FederatedClient - INFO - Starting to push execute result.
+PREPARE CLIENT -> SERVER PAYLOAD
+2022-07-28 02:52:36,553 - Communicator - INFO - Send submitUpdate to example_project server
+TRANSFER CLIENT -> SERVER START
+
+======
+SERVER
+=======
+PAYLOAD TRANSFER
+2022-07-28 02:52:37,159 - FederatedServer - INFO - received update from example_project_site-1_0 (134219026 Bytes, 1658976757 seconds)
+
+============
+FRONT FW END
+============
+COMMENTS TRANSFER
+TRANSFER CLIENT -> SERVER END
+2022-07-28 02:52:37,428 - Communicator - INFO - Received comments: example_project Received from site-1 (134219026 Bytes, 1658976757 seconds). SubmitUpdate time: 0.8756866455078125 seconds
+2022-07-28 02:52:37,436 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: result sent to server for task: name=train, id=7bb759b6-2b9b-427a-b030-a2b70d4604d5
+
+======
+SERVER
+=======
+2022-07-28 02:52:37,522 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got result from client for task: name=train, id=7bb759b6-2b9b-427a-b030-a2b70d4604d5
+2022-07-28 02:52:37,540 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: invoking result_received_cb ...
+2022-07-28 02:52:37,540 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: Contribution from site-1 ACCEPTED by the aggregator.
+2022-07-28 02:52:37,540 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=7bb759b6-2b9b-427a-b030-a2b70d4604d5]: finished processing client result by train_ctl
+???
+2022-07-28 02:52:37,905 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: task train exit with status TaskCompletionStatus.OK
+???
+2022-07-28 02:52:38,289 - ModelAggregatorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Forwarding front activations at round 81
+
+KNOWN LATENCIES
+- POLLING: 0.394s
+- TRANSFER SERVER -> CLIENT: 0.525s
+- CLIENT COMP: 0.139s
+- PREPARE CLIENT -> SERVER PAYLOAD: 0.293s
+- TRANSFER CLIENT -> SERVER: 0.875s (0.606s PAYLOAD TRANSFER + 0.269 COMMENTS TRANSFER)
+TRANSFER TOTAL = 0.525 + 0.293 + 0.875 = 1.693s
+TOTAL KNOWN = 0.394 + 0.525 + 0.139 + 0.293 + 0.875 = 2.226s
+
+UNKNOWN LATENCIES
+- Processing Client Result Finish (ServerRunner) to task exit (Controller): 0.365s
+- After task sent and wait: 0.384s
+- Other: 0.197s
+TOTAL UNKNOWN = 0.365 + 0.384 = 0.749s
+TOTAL UNKNOWN WITH OTHER = 1.566 + 0.197 = 0.946s
+
+TOTAL KNOWN + UNKNOWN = 2.226 + 0.749 = 2.975s
+TOTAL E2E = 3.172s
+OTHER = 0.197
+
+=========
+CENTER FW
+=========
+
+======
+SERVER
+======
+2022-07-28 02:52:38,363 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Sending center stage task to site-0.
+2022-07-28 02:52:38,363 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: scheduled task train
+POLLING
+2022-07-28 02:52:38,603 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: assigned task to client: name=train, id=d993de6b-1479-468a-9ae4-26c3af5a46ca
+2022-07-28 02:52:38,603 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: sent task assignment to client
+TRANSFER SERVER -> CLIENT START
+2022-07-28 02:52:40,259 - FederatedServer - INFO - GetTask: Return task: train to client: site-0 (24259cb3-f3c2-49eb-a4cc-59a799ee7427)
+
+===============
+CENTER FW START
+===============
+TRANSFER SERVER -> CLIENT START END
+2022-07-28 02:52:40,906 - Communicator - INFO - Received from example_project server  (134218701 Bytes). getTask time: 2.533672332763672 seconds
+2022-07-28 02:52:40,912 - FederatedClient - INFO - pull_task completed. Task name:train Status:True
+EXTRACT SERVER -> CLIENT PAYLOAD
+2022-07-28 02:52:41,111 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got task assignment: name=train, id=d993de6b-1479-468a-9ae4-26c3af5a46ca
+2022-07-28 02:52:41,111 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: invoking task executor <class 'pt.executors.learner_executor_splitnn.LearnerExecutorSplitNN'>
+2022-07-28 02:52:41,112 - LearnerExecutorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: Client trainer got task: train
+2022-07-28 02:52:41,112 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: CENTER stage (forward) of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-0 started
+2022-07-28 02:52:41,841 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: CENTER stage (forward) of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-0 finished
+2022-07-28 02:52:41,842 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: finished processing task
+2022-07-28 02:52:41,849 - FederatedClient - INFO - Starting to push execute result.
+2022-07-28 02:52:41,854 - Communicator - INFO - Send submitUpdate to example_project server
+
+======
+SERVER
+=======
+2022-07-28 02:52:41,870 - FederatedServer - INFO - received update from example_project_site-0_0 (8389902 Bytes, 1658976761 seconds)
+
+=============
+CENTER FW END
+=============
+2022-07-28 02:52:41,874 - Communicator - INFO - Received comments: example_project Received from site-0 (8389902 Bytes, 1658976761 seconds). SubmitUpdate time: 0.01997542381286621 seconds
+2022-07-28 02:52:41,876 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: result sent to server for task: name=train, id=d993de6b-1479-468a-9ae4-26c3af5a46ca
+
+======
+SERVER
+=======
+2022-07-28 02:52:41,877 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got result from client for task: name=train, id=d993de6b-1479-468a-9ae4-26c3af5a46ca
+2022-07-28 02:52:41,879 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: invoking result_received_cb ...
+2022-07-28 02:52:41,879 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: Contribution from site-0 ACCEPTED by the aggregator.
+2022-07-28 02:52:41,879 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=d993de6b-1479-468a-9ae4-26c3af5a46ca]: finished processing client result by train_ctl
+???
+2022-07-28 02:52:42,072 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: task train exit with status TaskCompletionStatus.OK
+2022-07-28 02:52:42,072 - ModelAggregatorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Forwarding center activations at round 81
+
+
+KNOWN LATENCIES
+- POLLING: 0.240s
+- TRANSFER SERVER -> CLIENT: 2.303s
+- EXTRACT SERVER -> CLIENT PAYLOAD: 0.199s
+- CLIENT COMP: 0.729s
+TRANSFER TOTAL = 2.303 + 0.199 = 2.502s
+TOTAL KNOWN = 0.240 + 2.303 + 0.199 + 0.729 = 3.471s
+
+UNKNOWN LATENCIES
+- Processing Client Result Finish (ServerRunner) to task exit (Controller): 0.193s
+- Other: 0.045s
+TOTAL UNKNOWN = 0.193s
+TOTAL UNKNOWN WITH OTHER = 0.193 + 0.045 = 0.238s
+
+TOTAL KNOWN + UNKNOWN = 3.471 + 0.193 = 3.664s
+TOTAL E2E = 3.709s
+OTHER = 0.045s
+
+====
+BACK
+====
+
+======
+SERVER
+=======
+2022-07-28 02:52:42,080 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Sending back stage task to site-1
+2022-07-28 02:52:42,081 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: scheduled task train
+POLLING
+2022-07-28 02:52:42,974 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: assigned task to client: name=train, id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f
+2022-07-28 02:52:42,975 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: sent task assignment to client
+TRANSFER SERVER -> CLIENT START
+2022-07-28 02:52:43,539 - FederatedServer - INFO - GetTask: Return task: train to client: site-1 (7191f948-5ef0-4b8d-b9e5-26336571ee75)
+
+==========
+BACK START
+==========
+TRANSFER SERVER -> CLIENT END
+2022-07-28 02:52:43,560 - Communicator - INFO - Received from example_project server  (8389575 Bytes). getTask time: 0.791724443435669 seconds
+2022-07-28 02:52:43,562 - FederatedClient - INFO - pull_task completed. Task name:train Status:True
+2022-07-28 02:52:43,565 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got task assignment: name=train, id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f
+2022-07-28 02:52:43,566 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: invoking task executor <class 'pt.executors.learner_executor_splitnn.LearnerExecutorSplitNN'>
+2022-07-28 02:52:43,566 - LearnerExecutorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: Client trainer got task: train
+2022-07-28 02:52:43,566 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: BACK stage of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-1 started
+2022-07-28 02:52:43,594 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: ROUND:    81 - BATCH LOSS: 2.309 - BATCH ACC: 9.3%
+2022-07-28 02:52:43,595 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: BACK stage of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-1 finished
+2022-07-28 02:52:43,595 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: finished processing task
+2022-07-28 02:52:43,607 - FederatedClient - INFO - Starting to push execute result.
+2022-07-28 02:52:43,623 - Communicator - INFO - Send submitUpdate to example_project server
+
+======
+SERVER
+=======
+TRANSFER CLIENT -> SERVER
+2022-07-28 02:52:44,079 - FederatedServer - INFO - received update from example_project_site-1_0 (8389898 Bytes, 1658976764 seconds)
+2022-07-28 02:52:44,088 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got result from client for task: name=train, id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f
+2022-07-28 02:52:44,089 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: invoking result_received_cb ...
+2022-07-28 02:52:44,089 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: Contribution from site-1 ACCEPTED by the aggregator.
+2022-07-28 02:52:44,089 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: finished processing client result by train_ctl
+
+========
+BACK END
+========
+2022-07-28 02:52:44,095 - Communicator - INFO - Received comments: example_project Received from site-1 (8389898 Bytes, 1658976764 seconds). SubmitUpdate time: 0.47181034088134766 seconds
+2022-07-28 02:52:44,096 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f]: result sent to server for task: name=train, id=3bade2d9-4f79-448b-b4b7-e0f2bf35b40f
+
+======
+SERVER
+=======
+2022-07-28 02:52:44,158 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: task train exit with status TaskCompletionStatus.OK
+???
+2022-07-28 02:52:44,611 - ModelAggregatorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Forwarding back/center gradients at round 81
+
+
+KNOWN LATENCIES
+- POLLING: 0.893s
+- TRANSFER SERVER -> CLIENT: 0.585s
+- CLIENT COMP: 0.030s
+- TRANSFER CLIENT -> SERVER: 0.456s
+TOTAL TRANSFER = 0.585 + 0.456 = 1.041s
+TOTAL KNOWN = 0.893 + 0.585 + 0.030 + 0.456 = 1.964s
+
+UNKNOWN LATENCIES
+- After task sent and wait: 0.453s
+- Other: 0.114s
+TOTAL UNKNOWN = 0.453s
+TOTAL UNKNOWN WITH OTHER = 0.453 + 0.114 = 0.567s
+
+TOTAL KNOWN + UNKNOWN = 1.964 + 0.453 = 2.417s
+TOTAL E2E = 2.531s
+OTHER = 0.114s
+
+
+=========
+CENTER BW
+=========
+
+======
+SERVER
+=======
+2022-07-28 02:52:44,673 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Sending center stage task to site-0.
+2022-07-28 02:52:44,673 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: scheduled task train
+POLLING
+2022-07-28 02:52:45,424 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: assigned task to client: name=train, id=d212d867-096e-4e9a-989e-7ecf30fe9f7f
+2022-07-28 02:52:45,424 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: sent task assignment to client
+TRANSFER SERVER -> CLIENT START
+2022-07-28 02:52:45,981 - FederatedServer - INFO - GetTask: Return task: train to client: site-0 (24259cb3-f3c2-49eb-a4cc-59a799ee7427)
+
+===============
+CENTER BW START
+===============
+TRANSFER SERVER -> CLIENT END
+2022-07-28 02:52:45,995 - Communicator - INFO - Received from example_project server  (8389574 Bytes). getTask time: 0.8075728416442871 seconds
+2022-07-28 02:52:45,997 - FederatedClient - INFO - pull_task completed. Task name:train Status:True
+2022-07-28 02:52:46,000 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got task assignment: name=train, id=d212d867-096e-4e9a-989e-7ecf30fe9f7f
+2022-07-28 02:52:46,001 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: invoking task executor <class 'pt.executors.learner_executor_splitnn.LearnerExecutorSplitNN'>
+2022-07-28 02:52:46,001 - LearnerExecutorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: Client trainer got task: train
+2022-07-28 02:52:46,001 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: CENTER stage (backward) of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-0 started
+2022-07-28 02:52:47,660 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: CENTER stage (backward) of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-0 finished
+2022-07-28 02:52:47,660 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: finished processing task
+2022-07-28 02:52:47,662 - FederatedClient - INFO - Starting to push execute result.
+PREPARE CLIENT -> SERVER PAYLOAD
+2022-07-28 02:52:47,955 - Communicator - INFO - Send submitUpdate to example_project server
+
+======
+SERVER
+=======
+TRANSFER CLIENT -> SERVER
+2022-07-28 02:52:48,670 - FederatedServer - INFO - received update from example_project_site-0_0 (134219022 Bytes, 1658976768 seconds)
+
+=============
+CENTER BW END
+=============
+COMMENTS
+2022-07-28 02:52:48,938 - Communicator - INFO - Received comments: example_project Received from site-0 (134219022 Bytes, 1658976768 seconds). SubmitUpdate time: 0.9826574325561523 seconds
+2022-07-28 02:52:48,946 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: result sent to server for task: name=train, id=d212d867-096e-4e9a-989e-7ecf30fe9f7f
+
+======
+SERVER
+=======
+2022-07-28 02:52:49,034 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got result from client for task: name=train, id=d212d867-096e-4e9a-989e-7ecf30fe9f7f
+2022-07-28 02:52:49,053 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: invoking result_received_cb ...
+2022-07-28 02:52:49,053 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: Contribution from site-0 ACCEPTED by the aggregator.
+2022-07-28 02:52:49,053 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-0, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=d212d867-096e-4e9a-989e-7ecf30fe9f7f]: finished processing client result by train_ctl
+???
+2022-07-28 02:52:49,349 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: task train exit with status TaskCompletionStatus.OK
+2022-07-28 02:52:49,350 - ModelAggregatorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Forwarding back/center gradients at round 81
+
+
+KNOWN LATENCIES
+- POLLING: 0.751s
+- TRANSFER SERVER -> CLIENT: 0.571s
+- CLIENT COMP: 1.659s
+- PREPARE CLIENT -> SERVER PAYLOAD: 0.293s
+- TRANSFER CLIENT -> SERVER: 0.983s (0.715s REAL TRANSFER + 0.268s COMMENTS)
+TOTAL TRANSFER = 0.571 + 0.293 + 0.983 = 1.847s
+TOTAL KNOWN = 0.751 + 0.571 + 1.659 + 0.293 + 0.983 = 4.257s
+
+UNKNOWN LATENCIES
+- Processing Client Result Finish (ServerRunner) to task exit (Controller): 0.296s
+- Other: 0.185s
+TOTAL UNKNOWN = 0.296
+TOTAL UNKNOWN WITH OTHER = 0.296 + 0.185 = 0.481s
+
+TOTAL KNOWN + UNKNOWN = 4.257 + 0.296 = 4.553s
+TOTAL E2E = 4.738s
+OTHER = 0.185s
+
+
+========
+FRONT BW
+========
+
+======
+SERVER
+=======
+2022-07-28 02:52:49,359 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Sending front HFL stage task to site-1
+2022-07-28 02:52:49,359 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: scheduled task train
+POLLING
+2022-07-28 02:52:50,076 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: assigned task to client: name=train, id=2f157661-352c-4546-ae16-7cf3f695d736
+2022-07-28 02:52:50,077 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: sent task assignment to client
+TRANSFER SERVER -> CLIENT START
+2022-07-28 02:52:51,758 - FederatedServer - INFO - GetTask: Return task: train to client: site-1 (7191f948-5ef0-4b8d-b9e5-26336571ee75)
+
+==============
+FRONT BW START
+==============
+TRANSFER SERVER -> CLIENT END
+2022-07-28 02:52:52,403 - Communicator - INFO - Received from example_project server  (134218701 Bytes). getTask time: 2.543442487716675 seconds
+2022-07-28 02:52:52,412 - FederatedClient - INFO - pull_task completed. Task name:train Status:True
+EXTRACT SERVER -> CLIENT PAYLOAD
+2022-07-28 02:52:52,609 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got task assignment: name=train, id=2f157661-352c-4546-ae16-7cf3f695d736
+2022-07-28 02:52:52,610 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: invoking task executor <class 'pt.executors.learner_executor_splitnn.LearnerExecutorSplitNN'>
+2022-07-28 02:52:52,610 - LearnerExecutorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: Client trainer got task: train
+2022-07-28 02:52:52,610 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: FRONT HFL BW stage of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-1 started
+2022-07-28 02:52:52,645 - LearnerSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: FRONT HFL BW stage of EPOCH 7 / 200 - BATCH 3 / 10 - ROUND 81 for CLIENT site-1 finished
+2022-07-28 02:52:52,646 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: finished processing task
+2022-07-28 02:52:52,647 - FederatedClient - INFO - Starting to push execute result.
+2022-07-28 02:52:52,648 - Communicator - INFO - Send submitUpdate to example_project server
+
+======
+SERVER
+=======
+2022-07-28 02:52:52,650 - FederatedServer - INFO - received update from example_project_site-1_0 (1116 Bytes, 1658976772 seconds)
+
+============
+FRONT BW END
+=============
+2022-07-28 02:52:52,651 - Communicator - INFO - Received comments: example_project Received from site-1 (1116 Bytes, 1658976772 seconds). SubmitUpdate time: 0.0031092166900634766 seconds
+2022-07-28 02:52:52,652 - ClientRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer=example_project, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: result sent to server for task: name=train, id=2f157661-352c-4546-ae16-7cf3f695d736
+
+======
+SERVER
+=======
+2022-07-28 02:52:52,651 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0]: got result from client for task: name=train, id=2f157661-352c-4546-ae16-7cf3f695d736
+2022-07-28 02:52:52,651 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: invoking result_received_cb ...
+2022-07-28 02:52:52,652 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: Contribution from site-1 ACCEPTED by the aggregator.
+2022-07-28 02:52:52,652 - ServerRunner - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl, peer=site-1, peer_run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, peer_rc=OK, task_name=train, task_id=2f157661-352c-4546-ae16-7cf3f695d736]: finished processing client result by train_ctl
+???
+2022-07-28 02:52:53,015 - ScatterAndGatherSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: task train exit with status TaskCompletionStatus.OK
+2022-07-28 02:52:53,015 - ModelAggregatorSplitNN - INFO - [run=a06c5735-7837-4be5-bf97-8f9fd743c5c0, wf=train_ctl]: Forwarding weights at round 81
+
+
+KNOWN LATENCIES
+- POLLING: 0.717s
+- TRANSFER SERVER -> CLIENT: 2.326s
+- EXTRACT SERVER -> CLIENT PAYLOAD: 0.197s
+- CLIENT COMP: 0.035s
+TOTAL TRANSFER = 2.326 + 0.197 = 2.523s
+TOTAL KNOWN = 0.717 + 2.326 + 0.197 + 0.035 = 3.275s
+
+UNKNOWN LATENCIES
+- Processing Client Result Finish (ServerRunner) to task exit (Controller): 0.363s
+- Other: 0.018s
+TOTAL UNKNOWN = 0.363s
+TOTAL UNKNOWN WITH OTHER = 0.363 + 0.018 = 0.381
+
+TOTAL KNOWN + UNKNOWN = 3.275 + 0.363 = 3.638s
+TOTAL E2E = 3.656s
+OTHER = 0.018s

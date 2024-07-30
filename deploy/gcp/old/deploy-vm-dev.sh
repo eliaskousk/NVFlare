@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#
+# With original Debian image before provisioning
+#
+# gcloud compute instances create nvflare-dev-1 --project=stromasys-projects --zone=europe-west4-a --machine-type=a2-highgpu-1g --network-interface=network-tier=PREMIUM,private-network-ip=10.164.15.200,subnet=default --metadata=enable-oslogin=true --maintenance-policy=TERMINATE --provisioning-model=STANDARD --service-account=1095933948428-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --accelerator=count=1,type=nvidia-tesla-a100 --tags=nvflare-dev --create-disk=auto-delete=yes,boot=yes,device-name=nvflare-dev,image=projects/ml-images/global/images/c0-deeplearning-common-cu113-v20220928-debian-10,mode=rw,size=100,type=projects/stromasys-projects/zones/europe-west4-a/diskTypes/pd-ssd --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+
+#
+# nvflare-dev-1 - a100 GPU - 10.164.15.200
+#
+gcloud compute instances create nvflare-dev-1 --project=stromasys-projects --zone=europe-west4-a --machine-type=a2-highgpu-1g --network-interface=network-tier=PREMIUM,private-network-ip=10.164.15.200,subnet=default --metadata=enable-oslogin=true --maintenance-policy=TERMINATE --provisioning-model=STANDARD --service-account=1095933948428-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --accelerator=count=1,type=nvidia-tesla-a100 --tags=nvflare-dev --create-disk=auto-delete=yes,boot=yes,device-name=nvflare-dev-2,image=projects/stromasys-projects/global/images/nvflare-dev-image,mode=rw,size=100,type=projects/stromasys-projects/zones/us-central1-a/diskTypes/pd-ssd --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+
+#
+# nvflare-dev-2 - a100 GPU - 10.164.15.201
+#
+gcloud compute instances create nvflare-dev-2 --project=stromasys-projects --zone=europe-west4-a --machine-type=a2-highgpu-1g --network-interface=network-tier=PREMIUM,private-network-ip=10.164.15.201,subnet=default --metadata=enable-oslogin=true --maintenance-policy=TERMINATE --provisioning-model=STANDARD --service-account=1095933948428-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --accelerator=count=1,type=nvidia-tesla-a100 --tags=nvflare-dev --create-disk=auto-delete=yes,boot=yes,device-name=nvflare-dev-2,image=projects/stromasys-projects/global/images/nvflare-dev-image,mode=rw,size=100,type=projects/stromasys-projects/zones/us-central1-a/diskTypes/pd-ssd --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+
+#
+# nvflare-dev-3 - a100 GPU - 10.164.15.202
+#
+gcloud compute instances create nvflare-dev-3 --project=stromasys-projects --zone=europe-west4-a --machine-type=a2-highgpu-1g --network-interface=network-tier=PREMIUM,private-network-ip=10.164.15.202,subnet=default --metadata=enable-oslogin=true --maintenance-policy=TERMINATE --provisioning-model=STANDARD --service-account=1095933948428-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --accelerator=count=1,type=nvidia-tesla-a100 --tags=nvflare-dev --create-disk=auto-delete=yes,boot=yes,device-name=nvflare-dev-2,image=projects/stromasys-projects/global/images/nvflare-dev-image,mode=rw,size=100,type=projects/stromasys-projects/zones/us-central1-a/diskTypes/pd-ssd --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+

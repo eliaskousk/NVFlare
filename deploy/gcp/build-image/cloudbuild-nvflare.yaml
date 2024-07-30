@@ -1,0 +1,31 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'docker pull eu.gcr.io/$PROJECT_ID/nvflare:latest || exit 0']
+
+- name: "gcr.io/cloud-builders/docker"
+  args:
+  - build
+  - "--tag=eu.gcr.io/$PROJECT_ID/nvflare:latest"
+  - "--file=./deploy/docker/Dockerfile-nvflare"
+  - "--cache-from=eu.gcr.io/$PROJECT_ID/nvflare:latest"
+  - .
+
+images:
+  - "eu.gcr.io/$PROJECT_ID/nvflare:latest"
+
+#
+# This is an alternative way to have cached images
+# But it's slower than the above method: ~2m (above) vs ~5m (kaniko)
+# 5m is actually the time it takes for the above without caching...
+#
+
+#- name: 'gcr.io/kaniko-project/executor:latest'
+#  args:
+#  - --destination=eu.gcr.io/$PROJECT_ID/nvflare:splitnn
+#  - --dockerfile=./deploy/docker/Dockerfile
+#  - --cache=true
+#  - --cache-ttl=120h
+
+timeout: 3600s

@@ -1,0 +1,36 @@
+parties:
+  - name: vt
+    container_name: server
+
+  - name: site-0
+    container_name: client
+
+  - name: site-1
+    container_name: client
+
+  - name: site-2
+    container_name: client
+
+  - name: site-3
+    container_name: client
+
+  - name: site-4
+    container_name: client
+
+  - name: site-5
+    container_name: client
+
+  - name: site-6
+    container_name: client
+
+  - name: site-7
+    container_name: client
+
+  - name: site-8
+    container_name: client
+
+  - name: site-9
+    container_name: client
+
+  - name: site-10
+    container_name: client
